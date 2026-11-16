@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List Your Property | RentConnect</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Owner ka alag entry page. Renter homepage ka menu yahan nahi hai. -->
+  <header class="header wrap"><a class="logo" href="index.html">RENT<span>CONNECT</span></a><span>For property owners</span></header>
+  <main class="page wrap">
+    <a class="back" href="index.html">← Back to renter homepage</a>
+    <p class="small-title">LIST YOUR PROPERTY</p>
+    <h1>Your room.<br><span>Someone's next home.</span></h1>
+    <p>Add your room or flat details for people looking for monthly stays. This separate owner page is a form design preview.</p>
+
+    <!-- Future mein login ke baad ye form database mein save hoga. -->
+    <section class="panel" aria-labelledby="form-title">
+      <h2 id="form-title">Property details</h2>
+      <form>
+        <div class="fields">
+          <label>Property title<input name="title" placeholder="e.g. Private room in Sector 62" required></label>
+          <label>Property type<select name="type"><option>Private room</option><option>Shared room</option><option>1 BHK flat</option><option>2 BHK flat</option></select></label>
+          <label>City<input name="city" placeholder="e.g. Noida" required></label>
+          <label>Locality<input name="locality" placeholder="e.g. Sector 62" required></label>
+          <label>Monthly rent (₹)<input name="rent" type="number" min="1" placeholder="8000" required></label>
+          <label>Security deposit (₹)<input name="deposit" type="number" min="0" placeholder="8000" required></label>
+          <label>Minimum stay (months)<input name="stay" type="number" min="1" value="1" required></label>
+          <label>Available from<input name="available" type="date" required></label>
+          <label class="full">Photos<input name="photos" type="file" accept="image/*" multiple></label>
+          <label class="full">Description<textarea name="description" placeholder="Furnishing, amenities, extra charges and house rules"></textarea></label>
+        </div>
+        <p class="note" id="owner-note">Preview only. Uploads and publishing are not connected. Please use sample information.</p>
+        <!-- Backend ready hone ke baad disabled hata kar submit connect karna. -->
+        <button class="button" type="button" disabled aria-describedby="owner-note">Publish listing — coming soon</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

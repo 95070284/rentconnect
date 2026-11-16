@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your account | RentConnect</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header wrap"><a class="logo" href="index.html">RENT<span>CONNECT</span></a><a href="index.html">Back to home</a></header>
+  <main class="page wrap">
+    <h1>Your next home starts here.</h1>
+    <p>Account layout preview. Authentication is not connected. Please do not enter real passwords.</p>
+    <!-- Login aur signup ka simple layout. Abhi data send nahi hota. -->
+    <section class="panel" id="login" aria-labelledby="login-title">
+      <h2 id="login-title">Login</h2>
+      <form>
+        <div class="fields"><label>Email<input name="email" type="email" autocomplete="email" placeholder="you@example.com"></label><label>Password<input name="password" type="password" autocomplete="current-password" placeholder="Demo only"></label></div>
+        <p class="note">Login will be available once authentication is added.</p>
+        <button class="button" type="button" disabled>Login — coming soon</button>
+      </form>
+    </section>
+    <section class="panel" id="signup" aria-labelledby="signup-title">
+      <h2 id="signup-title">Sign Up</h2>
+      <form>
+        <div class="fields"><label>Your name<input name="name" autocomplete="name" placeholder="Your name"></label><label>Email<input name="email" type="email" autocomplete="email" placeholder="you@example.com"></label></div>
+        <p class="note">Account creation will be available once authentication is added.</p>
+        <button class="button" type="button" disabled>Create account — coming soon</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

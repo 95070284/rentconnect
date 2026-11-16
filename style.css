@@ -1,0 +1,1039 @@
+/* 1. Basic setup: website ke main colours yahan change karo. */
+:root {
+  --teal: #007f83;
+  --navy: #091b3b;
+  --text: #4c5870;
+  --light: #e7f7f5;
+  --line: #dce6ec;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+body {
+  margin: 0;
+  background: white;
+  color: var(--navy);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a,
+summary,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+p {
+  color: var(--text);
+}
+
+h2 {
+  font-size: clamp(25px, 3vw, 36px);
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+h3 {
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+:focus-visible {
+  outline: 3px solid #da7800;
+  outline-offset: 5px;
+}
+
+.wrap {
+  width: min(1200px, 92%);
+  margin-inline: auto;
+}
+
+.skip {
+  position: absolute;
+  top: -70px;
+  left: 15px;
+  padding: 10px;
+  background: white;
+  z-index: 10;
+}
+
+.skip:focus {
+  top: 10px;
+}
+
+/* Button ka colour aur round corners sab jagah yahin se change honge. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 15px 25px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--teal);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #00686c;
+}
+
+.button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+/* 2. Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 24px;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  white-space: nowrap;
+}
+
+.logo span {
+  color: var(--teal);
+}
+
+.menu,
+.account {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.menu a:hover,
+.account>a:first-child:hover {
+  color: var(--teal);
+}
+
+.account .button {
+  padding: 10px 24px;
+}
+
+/* Profile menu sirf mobile par dikhega. */
+.profile {
+  display: none;
+  position: relative;
+}
+
+.profile summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--light);
+  color: var(--teal);
+  list-style: none;
+}
+
+.profile summary::-webkit-details-marker {
+  display: none;
+}
+
+.profile[open] summary {
+  border-color: var(--teal);
+}
+
+.profile-menu {
+  position: absolute;
+  top: 54px;
+  right: 0;
+  z-index: 20;
+  width: 180px;
+  padding: 8px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px #153f4d20;
+}
+
+.profile-menu a {
+  display: block;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.profile-menu a:hover,
+.profile-menu a:focus-visible {
+  background: var(--light);
+  color: var(--teal);
+}
+
+/* 3. Hero: photo ki height aur heading ka size yahan hai. */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  align-items: center;
+  position: relative;
+  padding-bottom: 68px;
+}
+
+.hero-text {
+  padding: 24px 16px 100px 0;
+}
+
+h1 {
+  font-size: clamp(38px, 4.6vw, 62px);
+  line-height: 1.07;
+  letter-spacing: -2.5px;
+}
+
+h1 span {
+  color: var(--teal);
+}
+
+.hero-text p {
+  margin-top: 22px;
+  font-size: 21px;
+  line-height: 1.5;
+}
+
+.hero-photo {
+  width: 100%;
+  height: 465px;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+/* 4. Search bar: desktop par photo ke upar thoda overlap hai. */
+.search {
+  position: absolute;
+  bottom: 95px;
+  left: 0;
+  right: 24px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr auto;
+  align-items: center;
+  padding: 18px;
+  background: white;
+  box-shadow: 0 10px 40px #153f4d12;
+  border-radius: 18px;
+}
+
+.search label {
+  min-width: 0;
+  padding: 0 20px;
+  border-right: 1px solid var(--line);
+}
+
+.search label:nth-child(3) {
+  border: 0;
+}
+
+.field-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.search input,
+.search select {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  background: white;
+  color: var(--text);
+  padding: 4px 0;
+  font-size: 13px;
+}
+
+.search input::placeholder {
+  color: #68758a;
+  opacity: 1;
+}
+
+.search .button {
+  min-height: 64px;
+}
+
+/* 5. Benefits ke chhote boxes */
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  padding-bottom: 42px;
+}
+
+.benefit {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.benefit h2 {
+  font-size: 16px;
+  letter-spacing: 0;
+  margin-bottom: 4px;
+}
+
+.benefit p {
+  font-size: 14px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--light);
+  color: var(--teal);
+  font-size: 34px;
+}
+
+/* 6. Property section: cards ki spacing aur photos yahan edit karo. */
+.homes {
+  background: #f4f9fa;
+  padding-block: 38px;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.section-head p,
+.steps>p {
+  margin-top: 9px;
+  font-size: 17px;
+}
+
+.cities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cities span {
+  font-size: 13px;
+  padding: 9px 16px;
+  border: 1px solid #cedde5;
+  border-radius: 24px;
+}
+
+.demo {
+  font-size: 12px;
+  margin: 14px 0 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 22px #153f4d05;
+}
+
+.card-photo {
+  position: relative;
+}
+
+.card-photo img {
+  width: 100%;
+  height: 224px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 16px 20px 20px;
+}
+
+.place {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.place::before {
+  content: '●';
+  color: var(--teal);
+  margin-right: 7px;
+}
+
+.price {
+  margin-block: 12px 18px;
+  color: var(--navy);
+  font-size: 14px;
+}
+
+.price strong {
+  font-size: 23px;
+}
+
+.facts {
+  border-top: 1px solid var(--line);
+  padding-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.facts p {
+  font-size: 12px;
+}
+
+.facts p+p {
+  border-left: 1px solid var(--line);
+  padding-left: 18px;
+}
+
+.facts strong {
+  display: block;
+  color: var(--navy);
+  margin-top: 3px;
+  font-size: 14px;
+}
+
+/* Checkbox se heart select hota hai. Refresh ke baad save rehna guaranteed nahi hai. */
+.save {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #ffffffed;
+  cursor: pointer;
+}
+
+.save input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.save span {
+  color: #697687;
+  font-size: 23px;
+}
+
+.save input:checked+span {
+  color: var(--teal);
+}
+
+.save:focus-within {
+  outline: 3px solid #da7800;
+  outline-offset: 3px;
+}
+
+/* 7. How it works */
+.steps {
+  padding-block: 45px;
+}
+
+.step-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 38px;
+  margin-top: 30px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.step p {
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.step .icon {
+  width: 82px;
+  height: 82px;
+  font-size: 40px;
+}
+
+/* 8. Owner banner: iska button owner.html open karta hai. */
+.owner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 30px;
+  background: var(--light);
+  border-radius: 20px;
+}
+
+.house {
+  font-size: 90px;
+  line-height: 1;
+  color: var(--teal);
+  padding-inline: 18px;
+}
+
+.small-title {
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  margin-bottom: 6px;
+}
+
+.owner h2 {
+  margin-bottom: 6px;
+}
+
+.owner-link {
+  margin-left: auto;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.owner-link small {
+  display: block;
+  margin-top: 8px;
+  color: var(--text);
+}
+
+/* 9. Footer */
+.footer {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-block: 35px;
+}
+
+.footer .logo {
+  font-size: 22px;
+  margin-right: 20px;
+}
+
+.footer small {
+  margin-left: auto;
+  color: var(--text);
+  font-size: 11px;
+  padding-top: 6px;
+}
+
+.footer details {
+  font-size: 13px;
+  max-width: 230px;
+  padding-top: 5px;
+}
+
+summary {
+  cursor: pointer;
+}
+
+.footer details p {
+  padding-top: 10px;
+}
+
+/* 10. Owner aur account pages bhi same CSS use karte hain. */
+.page {
+  max-width: 860px;
+  padding-block: 35px 60px;
+}
+
+.page h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  letter-spacing: -1.5px;
+  margin-bottom: 16px;
+}
+
+.page>p {
+  max-width: 650px;
+}
+
+.panel {
+  margin-top: 30px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #f8fbfb;
+}
+
+.panel h2 {
+  font-size: 26px;
+  margin-bottom: 18px;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.fields label {
+  min-width: 0;
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.fields input,
+.fields select,
+.fields textarea {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  border: 1px solid #bdcdd6;
+  border-radius: 8px;
+  padding: 12px;
+  background: white;
+  color: var(--navy);
+  margin-top: 6px;
+}
+
+.fields textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.note {
+  margin-block: 18px;
+  font-size: 13px;
+}
+
+.back {
+  color: var(--teal);
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+/* 11. Tablet: search ko normal flow mein rakha hai, overlap nahi hoga. */
+@media (max-width: 1000px) {
+  .header {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .menu,
+  .account {
+    gap: 20px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .hero {
+    gap: 24px;
+    padding-block: 16px 30px;
+  }
+
+  .hero-text {
+    padding: 0;
+  }
+
+  .hero-text p {
+    font-size: 18px;
+  }
+
+  .hero-photo {
+    height: 350px;
+  }
+
+  .search {
+    position: static;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    padding: 20px;
+    border: 1px solid var(--line);
+  }
+
+  .search label {
+    padding: 0;
+    border: 0;
+  }
+
+  .search .button {
+    min-height: 52px;
+  }
+
+  .search input,
+  .search select {
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  .benefits {
+    gap: 20px;
+  }
+
+  .benefit {
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .section-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .card-photo img {
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+
+  .step {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .house {
+    display: none;
+  }
+
+  .owner {
+    gap: 22px;
+  }
+}
+
+/* 12. Chhote tablet par menu ki apni row hai. */
+@media (max-width: 800px) {
+  .home-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .home-header .menu {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: center;
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-text {
+    max-width: 580px;
+  }
+
+  .hero-photo {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .benefits {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .benefit {
+    align-items: center;
+  }
+
+  .step-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .step {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .step .icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .owner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .owner-link {
+    margin-left: 0;
+  }
+}
+
+/* 13. Mobile: fixed width nahi hai, poora layout screen ke saath fit hoga. */
+@media (max-width: 600px) {
+
+  /* Left logo, right profile. Neeche wali menu row apni jagah rahegi. */
+  .home-header .account {
+    display: none;
+  }
+
+  .home-header .profile {
+    display: block;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .wrap {
+    width: calc(100% - 32px);
+  }
+
+  .header {
+    padding-block: 16px;
+    gap: 12px;
+  }
+
+  .header .logo {
+    font-size: 21px;
+    letter-spacing: -1.3px;
+  }
+
+  .menu {
+    gap: 30px;
+    font-size: 14px;
+  }
+
+  .menu a {
+    padding-block: 6px;
+  }
+
+  .account {
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  .account>a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .account .button {
+    padding: 10px 14px;
+    border-radius: 10px;
+  }
+
+  .hero {
+    gap: 20px;
+    padding-top: 12px;
+    padding-bottom: 28px;
+  }
+
+  h1 {
+    font-size: clamp(32px, 9vw, 48px);
+    letter-spacing: -1.3px;
+    line-height: 1.12;
+  }
+
+  .hero-text p {
+    font-size: 17px;
+    margin-top: 16px;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .hero-photo {
+    border-radius: 18px;
+  }
+
+  .search {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    margin: 0;
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .search label {
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .search .button {
+    width: 100%;
+    min-height: 52px;
+  }
+
+  .benefits {
+    padding-bottom: 28px;
+  }
+
+  .benefit {
+    gap: 14px;
+  }
+
+  .benefit>div,
+  .step>div {
+    min-width: 0;
+  }
+
+  .homes {
+    padding-block: 28px;
+  }
+
+  .section-head p,
+  .steps>p {
+    font-size: 15px;
+  }
+
+  .cities {
+    gap: 7px;
+  }
+
+  .cities span {
+    padding: 7px 12px;
+  }
+
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .card-body {
+    padding: 18px;
+  }
+
+  .steps {
+    padding-block: 32px;
+  }
+
+  .owner {
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .owner-link {
+    width: 100%;
+  }
+
+  .owner-link .button {
+    width: 100%;
+    padding-inline: 12px;
+    gap: 10px;
+  }
+
+  .footer {
+    gap: 20px;
+  }
+
+  .footer .logo,
+  .footer small {
+    width: 100%;
+    margin: 0;
+  }
+
+  .fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .fields input,
+  .fields select,
+  .fields textarea {
+    font-size: 16px;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+
+  .panel .button {
+    width: 100%;
+    padding-inline: 10px;
+  }
+
+  .page {
+    padding-block: 20px 40px;
+  }
+}
+
+/* 14. 320px wale phones par bhi header ekdum fit rahe. */
+@media (max-width: 360px) {
+  .header .logo {
+    font-size: 18px;
+    letter-spacing: -1px;
+  }
+
+  .account {
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .account .button {
+    padding-inline: 10px;
+  }
+
+  .owner {
+    padding: 20px;
+  }
+}
+
+/* Browser mein motion kam set ho to smooth scroll band rahega. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
